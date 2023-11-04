@@ -1,0 +1,23 @@
+#include <Servo.h>
+
+const int buttonPin = 12;
+
+Servo sl;
+
+void setup()
+{
+  pinMode(buttonPin, INPUT);
+  sl.attach(13);
+}
+
+void loop()
+{
+  if(digitalRead(buttonPin) == HIGH)
+  {
+    sl.write(180);
+  }
+  else
+  {
+    sl.write(0);
+  }
+}
