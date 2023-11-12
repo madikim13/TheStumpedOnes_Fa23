@@ -1,0 +1,81 @@
+#include <Servo.h>
+
+// assigns servos for each interactions
+Servo apple;
+Servo money;
+Servo log;
+Servo boat;
+Servo theEnd;
+
+// assigns button pins for each switch
+const int buttonOnePin = 13;
+const int buttonTwoPin = 12;
+const int buttonThreePin = 11;
+const int buttonFourPin = 10;
+const int buttonFivePin = 9;
+
+void setup()
+{ 
+  pinMode(buttonOnePin, INPUT);
+  pinMode(buttonTwoPin, INPUT);
+  pinMode(buttonThreePin, INPUT);
+  pinMode(buttonFourPin, INPUT);
+  pinMode(buttonFivePin, INPUT);
+  apple.attach(7);
+  money.attach(6);
+  log.attach(5);
+  boat.attach(4);
+  senior.attach(3);
+}
+
+void loop()
+{
+  // first servo interaction: apple falls from tree
+  if(digitalRead(buttonOnePin) == HIGH)
+  {
+    apple.write(180);
+  }
+  else
+  {
+    apple.write(0);
+  }
+
+  // second servo interaction: farmers stand opens door to money
+  if(digitalRead(buttonTwoPin) == HIGH)
+  {
+    money.write(180);
+  }
+  else
+  {
+    money.write(0);
+  }
+
+  // third servo interaction: log falls from tree
+  if(digitalRead(buttonThreePin) == HIGH)
+  {
+    log.write(180);
+  }
+  else
+  {
+    log.write(0);
+  }
+
+  // fourth servo interaction: carpenter table turns it around to be a boat
+  if(digitalRead(buttonFourPin) == HIGH)
+  {
+    boat.write(180);
+  }
+  else
+  {
+    boat.write(0);
+  }
+
+  // fifth servo interaction: "The End" pops up
+  if(digitalRead(buttonFivePin) == HIGH)
+  {
+    theEnd.write(180);
+  }
+  else
+  {
+    theEnd.write(0);
+}
