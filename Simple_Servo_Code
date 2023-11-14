@@ -1,9 +1,8 @@
 #include <Servo.h>
 
 // assigns servos for each interactions
-Servo apple;
+Servo appleLog;
 Servo money;
-Servo log;
 Servo boat;
 Servo theEnd;
 
@@ -21,23 +20,29 @@ void setup()
   pinMode(buttonThreePin, INPUT);
   pinMode(buttonFourPin, INPUT);
   pinMode(buttonFivePin, INPUT);
-  apple.attach(7);
+
+  appleLog.attach(7);
+  appleLog.write(90); //makes appleLog servo start at the middle
   money.attach(6);
-  log.attach(5);
-  boat.attach(4);
-  senior.attach(3);
+  boat.attach(5);
+  theEnd.attach(4);
 }
 
 void loop()
 {
-  // first servo interaction: apple falls from tree
+  // first servo interaction: apple falls from tree towards one side
   if(digitalRead(buttonOnePin) == HIGH)
   {
-    apple.write(180);
+    appleLog.write(180);
+  }
+  // third servo interaction: log falls from tree towards different side
+  else if(digitalRead(buttonThreePin) == HIGH)
+  {
+    appleLog.write(0);
   }
   else
   {
-    apple.write(0);
+    appleLog.write(90);
   }
 
   // second servo interaction: farmers stand opens door to money
@@ -50,17 +55,7 @@ void loop()
     money.write(0);
   }
 
-  // third servo interaction: log falls from tree
-  if(digitalRead(buttonThreePin) == HIGH)
-  {
-    log.write(180);
-  }
-  else
-  {
-    log.write(0);
-  }
-
-  // fourth servo interaction: carpenter table turns it around to be a boat
+  // fourth servo interaction: carpenter table turns around to be a boat
   if(digitalRead(buttonFourPin) == HIGH)
   {
     boat.write(180);
@@ -78,4 +73,5 @@ void loop()
   else
   {
     theEnd.write(0);
+  }
 }
